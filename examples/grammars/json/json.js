@@ -14,6 +14,10 @@ const StringLiteral = createToken({
   name: "StringLiteral",
   pattern: /"(?:[^\\"]|\\(?:[bfnrtv"\\/]|u[0-9a-fA-F]{4}))*"/
 })
+const UnclosedStringLiteral = createToken({
+  name: "UnclosedStringLiteral",
+  pattern: /"(:?[^\\"\n\r]+|\\(:?[bfnrtv"\\/]|u[0-9a-fA-F]{4}))*/
+})
 const NumberLiteral = createToken({
   name: "NumberLiteral",
   pattern: /-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?/
@@ -28,6 +32,7 @@ const allTokens = [
   WhiteSpace,
   NumberLiteral,
   StringLiteral,
+  UnclosedStringLiteral,
   LCurly,
   RCurly,
   LSquare,
